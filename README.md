@@ -1,4 +1,0 @@
-# sassTesting
-sass test
-
-asdasdhfdfdf
