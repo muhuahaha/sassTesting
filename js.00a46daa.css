@@ -840,12 +840,19 @@ input::-moz-focus-inner {
     -webkit-box-flex: 1;
         -ms-flex: 1 5 50%;
             flex: 1 5 50%;
-    -webkit-clip-path: circle(32% at center);
-            clip-path: circle(32% at center);
+    -webkit-clip-path: circle(28% at center);
+            clip-path: circle(28% at center);
     background: rgba(255, 255, 255, 0.5);
     -webkit-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
+  }
+  .box2 .avatar {
+    -webkit-clip-path: circle(43% at center);
+            clip-path: circle(43% at center);
+  }
+  .box2 .avatar img {
+    width: 80%;
   }
 
   .box3 {
@@ -1148,14 +1155,14 @@ input::-moz-focus-inner {
       -ms-flex-pack: center;
           justify-content: center;
   background: rgba(255, 255, 255, 0.4);
-  -webkit-clip-path: circle(43% at center);
-          clip-path: circle(43% at center);
+  -webkit-clip-path: circle(48% at center);
+          clip-path: circle(48% at center);
   -webkit-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
 .avatar img {
-  width: 80%;
+  width: 100%;
 }
 
 body {
