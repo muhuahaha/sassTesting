@@ -230,6 +230,7 @@ input::-moz-focus-inner {
 .main-header .logo {
   font-size: 2rem;
   font-weight: bold;
+  z-index: 11;
 }
 .main-header .logo a:focus {
   outline: 0;
@@ -1163,6 +1164,93 @@ input::-moz-focus-inner {
 }
 .avatar img {
   width: 100%;
+}
+
+.run-animation {
+  position: relative;
+  -webkit-animation: logo-swap 3s ease;
+          animation: logo-swap 3s ease;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.run-animation:after {
+  content: "";
+  -webkit-animation-name: logo-swap;
+          animation-name: logo-swap;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+@-webkit-keyframes logo-swap {
+  0%, 100% {
+    content: "😎";
+  }
+  10% {
+    content: "😜";
+  }
+  20% {
+    content: "👍";
+  }
+  30% {
+    content: "💪";
+    top: 0;
+  }
+  40% {
+    content: "HIRE";
+  }
+  50% {
+    content: "ME!";
+  }
+  60% {
+    content: "✌️";
+  }
+  70% {
+    content: "🍚";
+  }
+  80% {
+    content: "🚣";
+  }
+  90% {
+    content: "🚀";
+  }
+}
+
+@keyframes logo-swap {
+  0%, 100% {
+    content: "😎";
+  }
+  10% {
+    content: "😜";
+  }
+  20% {
+    content: "👍";
+  }
+  30% {
+    content: "💪";
+    top: 0;
+  }
+  40% {
+    content: "HIRE";
+  }
+  50% {
+    content: "ME!";
+  }
+  60% {
+    content: "✌️";
+  }
+  70% {
+    content: "🍚";
+  }
+  80% {
+    content: "🚣";
+  }
+  90% {
+    content: "🚀";
+  }
+}
+#logo {
+  text-align: center;
 }
 
 body {
