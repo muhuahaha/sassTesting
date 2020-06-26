@@ -330,6 +330,102 @@ gsap.utils.toArray('.nav-link a').forEach(function (a) {
     });
   });
 });
+},{}],"js/lightbox.js":[function(require,module,exports) {
+// Portfolio Item Filter
+var filterContainer = document.querySelector('.portfolio-filter');
+var filterBtns = filterContainer.children;
+var totalFilterBtn = filterBtns.length;
+var portfolioItems = document.querySelectorAll('.portfolio-item');
+var totalPortfolioItem = portfolioItems.length;
+console.log(totalPortfolioItem);
+
+for (var i = 0; i < totalFilterBtn; i++) {
+  filterBtns[i].addEventListener('click', function () {
+    filterContainer.querySelector('.active').classList.remove('active');
+    this.classList.add('active');
+    var filterValue = this.getAttribute('data-filter');
+    console.log(filterValue);
+
+    for (var k = 0; k < totalPortfolioItem; k++) {
+      console.log("".concat(portfolioItems[k].getAttribute('data-category'), "ASdasd"));
+
+      if (filterValue === portfolioItems[k].getAttribute('data-category')) {
+        portfolioItems[k].classList.remove('hide');
+        portfolioItems[k].classList.add('show');
+      } else {
+        portfolioItems[k].classList.remove('show');
+        portfolioItems[k].classList.add('hide');
+      }
+
+      if (filterValue === 'all') {
+        portfolioItems[k].classList.remove('hide');
+        portfolioItems[k].classList.add('show');
+      }
+    }
+  });
+} // console.log(filterContainer);
+// console.log(filterBtns);
+// console.log(totalFilterBtn);
+// console.log(portfolioItems);
+// Portfolio Ligthbox
+
+
+var lightbox = document.querySelector('.lightbox');
+var lightboxImg = lightbox.querySelector('.lightbox-img');
+var lightboxClose = lightbox.querySelector('.lightbox-close');
+var lightboxText = lightbox.querySelector('.caption-text');
+var lightboxCounter = lightbox.querySelector('.caption-counter');
+var itemIndex = 0;
+
+var _loop = function _loop(_i) {
+  portfolioItems[_i].addEventListener('click', function () {
+    itemIndex = _i;
+    changeItem();
+    toggleLightbox();
+  });
+};
+
+for (var _i = 0; _i < totalPortfolioItem; _i++) {
+  _loop(_i);
+}
+
+function nextItem() {
+  if (itemIndex === totalPortfolioItem - 1) {
+    itemIndex = 0;
+  } else {
+    itemIndex++;
+  }
+
+  changeItem();
+}
+
+function prevItem() {
+  if (itemIndex === 0) {
+    itemIndex = totalPortfolioItem - 1;
+  } else {
+    itemIndex--;
+  }
+
+  changeItem();
+}
+
+function toggleLightbox() {
+  lightbox.classList.toggle('open');
+}
+
+function changeItem() {
+  imgSrc = portfolioItems[itemIndex].querySelector('.portfolio-img img').getAttribute('src');
+  lightboxImg.src = imgSrc;
+  lightboxText.innerHTML = portfolioItems[itemIndex].querySelector('h4').innerHTML;
+  lightboxCounter.innerHTML = "".concat(itemIndex + 1, " of ").concat(totalPortfolioItem);
+} // close Lightbox
+
+
+lightbox.addEventListener('click', function (event) {
+  if (event.target === lightboxClose || event.target === lightbox) {
+    toggleLightbox();
+  }
+});
 },{}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -345,8 +441,10 @@ require("./rerun.js");
 
 require("./custom-gsap.js");
 
+require("./lightbox.js");
+
 document.querySelector('h4').textContent = (0, _bro.bro)("How's it going");
-},{"./bro":"js/bro.js","../styles/main.scss":"styles/main.scss","./scroll.js":"js/scroll.js","./swap.js":"js/swap.js","./rerun.js":"js/rerun.js","./custom-gsap.js":"js/custom-gsap.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./bro":"js/bro.js","../styles/main.scss":"styles/main.scss","./scroll.js":"js/scroll.js","./swap.js":"js/swap.js","./rerun.js":"js/rerun.js","./custom-gsap.js":"js/custom-gsap.js","./lightbox.js":"js/lightbox.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -374,7 +472,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53378" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54329" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
