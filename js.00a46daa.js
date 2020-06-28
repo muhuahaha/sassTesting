@@ -368,7 +368,6 @@ targets.forEach(function (target) {
 });
 gsap.utils.toArray('.demo-text').forEach(function (section, index) {
   var w = section.querySelector('.wrapper');
-  console.log(w);
 
   var _ref = index % 2 ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] : [w.scrollWidth * -1, 0],
       _ref2 = _slicedToArray(_ref, 2),
@@ -388,6 +387,14 @@ gsap.utils.toArray('.demo-text').forEach(function (section, index) {
   });
 });
 gsap.registerPlugin(TextPlugin);
+
+function randomPick(arr) {
+  var selected = arr[Math.floor(Math.random() * arr.length)];
+  return selected;
+}
+
+var txt = ['RUF#MICH#AN'];
+var selText = randomPick(txt);
 var tl2 = gsap.timeline({
   scrollTrigger: {
     trigger: '.test6',
@@ -404,8 +411,14 @@ tl2.to('.test6', {
   color: 'white',
   text: 'YTKYTKYTKYTKYTKYTKYTKYTKYTK',
   scale: 1,
-  duration: 1,
-  delay: 7
+  duration: 5,
+  delay: 5
+}).to('.test6', {
+  color: 'white',
+  text: selText,
+  scale: 1,
+  duration: 3,
+  delay: 3
 });
 },{}],"js/lightbox.js":[function(require,module,exports) {
 // Portfolio Item Filter
@@ -589,7 +602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56716" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58082" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
