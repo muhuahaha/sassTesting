@@ -543,6 +543,40 @@ input::-moz-focus-inner {
     background: #3bd80d;
   }
 }
+@-webkit-keyframes color-change-5xx {
+  0% {
+    background: #005ca7;
+  }
+  25% {
+    background: #e50041;
+  }
+  50% {
+    background: #fedc01;
+  }
+  75% {
+    background: #040c26;
+  }
+  100% {
+    background: #005ca7;
+  }
+}
+@keyframes color-change-5xx {
+  0% {
+    background: #005ca7;
+  }
+  25% {
+    background: #e50041;
+  }
+  50% {
+    background: #fedc01;
+  }
+  75% {
+    background: #040c26;
+  }
+  100% {
+    background: #005ca7;
+  }
+}
 .line {
   width: 100%;
   max-width: 1400px;
@@ -630,6 +664,22 @@ input::-moz-focus-inner {
   color: white;
   -webkit-animation: color-change-5x 35s linear 2s infinite alternate both;
           animation: color-change-5x 35s linear 2s infinite alternate both;
+}
+
+.colorChange {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10vw;
+  color: white;
+  -webkit-animation: color-change-5xx 55s linear 2s infinite alternate both;
+          animation: color-change-5xx 55s linear 2s infinite alternate both;
 }
 
 .row {

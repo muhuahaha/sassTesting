@@ -382,10 +382,30 @@ gsap.utils.toArray('.demo-text').forEach(function (section, index) {
     scrollTrigger: {
       start: 'top 80%',
       trigger: section,
-      scrub: 0.5,
-      markers: true
+      scrub: 0.5 // markers: true,
+
     }
   });
+});
+gsap.registerPlugin(TextPlugin);
+var tl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.test6',
+    // scrub: 5,
+    // pin: true,
+    start: '-=450',
+    end: '-=500',
+    toggleActions: 'restart none none reverse' // markers: true,
+
+  }
+});
+tl2.to('.test6', {
+  x: 20,
+  color: 'white',
+  text: 'YTKYTKYTKYTKYTKYTKYTKYTKYTK',
+  scale: 1,
+  duration: 1,
+  delay: 7
 });
 },{}],"js/lightbox.js":[function(require,module,exports) {
 // Portfolio Item Filter
@@ -569,7 +589,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59016" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56716" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
