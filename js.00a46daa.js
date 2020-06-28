@@ -317,6 +317,18 @@ element.addEventListener('mouseover', function (e) {
   element.classList.add('run-animation');
 }, false);
 },{}],"js/custom-gsap.js":[function(require,module,exports) {
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 ScrollTrigger.defaults({
   toggleActions: 'restart pause resume pause'
@@ -328,6 +340,51 @@ gsap.utils.toArray('.nav-link a').forEach(function (a) {
       duration: 1,
       scrollTo: e.target.getAttribute('href')
     });
+  });
+});
+var targets = document.querySelectorAll('#container div');
+targets.forEach(function (target) {
+  gsap.timeline({
+    defaults: {
+      duration: 1
+    },
+    scrollTrigger: {
+      trigger: target,
+      scrub: true,
+      start: 'center 80%',
+      end: 'center 20%'
+    }
+  }).fromTo(target, {
+    y: 50
+  }, {
+    y: -50
+  }).from(target, {
+    opacity: 0,
+    duration: 0.2
+  }, 0).to(target, {
+    opacity: 0,
+    duration: 0.2
+  }, 0.8);
+});
+gsap.utils.toArray('.demo-text').forEach(function (section, index) {
+  var w = section.querySelector('.wrapper');
+  console.log(w);
+
+  var _ref = index % 2 ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] : [w.scrollWidth * -1, 0],
+      _ref2 = _slicedToArray(_ref, 2),
+      x = _ref2[0],
+      xEnd = _ref2[1];
+
+  gsap.fromTo(w, {
+    x: x
+  }, {
+    x: xEnd,
+    scrollTrigger: {
+      start: 'top 80%',
+      trigger: section,
+      scrub: 0.5,
+      markers: true
+    }
   });
 });
 },{}],"js/lightbox.js":[function(require,module,exports) {
@@ -437,18 +494,28 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/slider.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.config = void 0;
 var config = {
   type: 'carousel',
-  animationDuration: 1000,
+  animationDuration: 800,
+  animationTimingFunc: 'ease-in-out',
   autoplay: 4500,
   startAt: 1,
   perView: 1,
+  focusAt: 'center',
+  gap: '40',
   breakpoints: {
     800: {
       perView: 1
     }
   }
 };
+exports.config = config;
 },{}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -502,7 +569,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58687" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59016" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
